@@ -15,7 +15,6 @@ export class ListsComponent implements OnInit {
   pageSize = 5;
   pagination: Pagination;
 
-
   constructor(private memberService: MembersService) { }
 
   ngOnInit(): void {

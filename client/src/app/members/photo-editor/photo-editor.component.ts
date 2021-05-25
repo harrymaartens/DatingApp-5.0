@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+﻿import { Component, Input, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
@@ -38,16 +38,16 @@ export class PhotoEditorComponent implements OnInit {
       this.accountService.setCurrentUser(this.user);
       this.member.photoUrl = photo.url;
       this.member.photos.forEach(p => {
-        if (p.isMain) { p.isMain = false; }
-        if (p.id === photo.id) { p.isMain = true; }
-      });
-    });
-  }
+        if (p.isMain) p.isMain = false;
+        if (p.id === photo.id) p.isMain = true;
+      })
+    })
+  } 
 
   deletePhoto(photoId: number) {
     this.memberService.deletePhoto(photoId).subscribe(() => {
       this.member.photos = this.member.photos.filter(x => x.id !== photoId);
-    });
+    })
   }
   
   initializeUploader() {
@@ -63,7 +63,7 @@ export class PhotoEditorComponent implements OnInit {
 
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
-    };
+    }
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
@@ -77,8 +77,7 @@ export class PhotoEditorComponent implements OnInit {
         }
 
       }
-    };
-
+    }
   }
 
 }
